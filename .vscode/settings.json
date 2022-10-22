@@ -1,8 +1,0 @@
-{
-    "files.autoSave": "onWindowChange",
-    "git.allowForcePush": false,
-    "window.autoDetectColorScheme": false,
-    "files.associations": {
-        "iostream": "cpp"
-    }
-}
