@@ -1,0 +1,27 @@
+0:question:Does this anime have energy as its power system?::1:2
+1:question:Does it involve ninjas?:0:3:4
+3:question:Does it include a fox spirit?:1:7:8
+7:question:Is the main character blonde?:3:13:14
+13:question:Does it feature the Akatsuki?:7:25:26
+25:question:Does it end with a war?:13:49:50
+49:answer:Naruto Shippuden:25::
+50:answer:Naruto:25::
+26:answer:Boruto:13::
+14:answer:InuYasha:7::
+8:question:Does it feature giant robots?:1:15:16
+15:answer:Gundam:8::
+16:answer:Code Geass:8::
+4:question:Is it an isekai?:0:9:10
+9:question:Does death kill them out of the game?:4:17:18
+17:answer:Sword Art Online:9::
+18:answer:Time I Was Reincarnated As A Slime:9::
+10:question:Does it revolve around alchemy?:4:19:20
+19:answer:Fullmetal Alchemist:10::
+20:answer:Attack on Titan:10::
+2:question:Is it psychological?:0:5:6
+5:question:Is it about survival games?:2:11:12
+11:answer:Dawrwin's Game:5::
+12:answer:Psycho-Pass:5::
+6:question:Does it involve espers?:2:21:22
+21:answer:Mob Psycho 100:6::
+22:answer:One Punch Man:6::
