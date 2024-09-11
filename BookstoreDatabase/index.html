@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Template for your web application</title>
+</head>
+<body bgcolor="ffffff"> 
+    <font face="times" size="3">
+        <hr noshade="noshade" size="2">
+        <h1>Project 1</h1>
+        <b>Team Members:</b>Ayimen Hussien, Viktoriia Synovyd, and Ollie Purdy<br><br>
+        <hr>
+        <ul>
+            <li><b>Relations:</b><br><br>
+                <i>In the following, substitute actual names for Relation1, Relation2 etc.
+                Have as many entries as the number of relations in your project. Clicking
+                a link on a relation name should execute an SQL query and list
+                *all* the tuples in that particular relation (of course, they don't work
+                below). Your output should be presented
+                in a neat orderly fashion, one row for each tuple and columns are evident.</i><br><br>
+                <ol>
+                    <li><a href="http://css1.seattleu.edu/~vsynovyd/new1.html" target="_blank">Book</a></li>
+                    <li><a href="http://css1.seattleu.edu/~lil/new2.html">Publisher</a></li>
+                    <li><a href="http://css1.seattleu.edu/~lil/new3.html">BookOrder</a></li>
+                    <li><a href="http://css1.seattleu.edu/~lil/new4.html">Customer</a></li>
+                    <li><a href="http://css1.seattleu.edu/~lil/new5.html">AuthoredBy</a></li>
+                    <li><a href="http://css1.seattleu.edu/~lil/new6.html">Author</a></li>
+                </ol><br><br>
+                <hr>
+            </li>
+            <li><b>Queries:</b><br><br>
+                <i>In the following, substitute the English query description for each of
+                the five queries that you did in milestone3 of your project. Again, clicking
+                a link on the query name should execute the appropriate SQL query and
+                list the tuples that are the answer to that particular query. Again,
+                make sure your output is neatly ordered and columns are evident.</i><br><br>
+                <ol>
+                    <li><a href="example1.php?query=1">Query1</a>: Get the names of books along with their publisher names and author names</li>
+                    <li><a href="example1.php?query=2">Query2</a>: Calculate the total revenue obtained by each book using the "sum" aggregate function</li>
+                    <li><a href="example1.php?query=3">Query3</a>: Find the authors who have written books that were ordered more than 10 times</li>
+                    <li><a href="example1.php?query=4">Query4</a>: Find prices available less than $15</li>
+                    <li><a href="example1.php?query=5">Query5</a>: List all customers along with the books they have ordered. If a customer hasn't ordered any books, it still lists their details</li>
+                </ol><br><br>
+                <hr>
+            </li>
+            <li><b>Ad-hoc Query:</b><br><br>
+                <i>Here, provide a free-form box and two buttons called
+                "Submit" and "Clear". The intent is that the user can enter any arbitrary
+                SQL query in the box and click the submit button; The action should be that you should
+                execute that query on the database and bring up the answers, once again, in a neat orderly fashion. Notice that the input
+                can be any legal SQL query (permissible under your DB system, of course).</i><br><br>
+                <form method="POST" action="example1.php">
+                    <table>
+                        <tr>
+                            <td align="right"><strong>Please enter your query here<br></strong></td>
+                            <td><input size="30" name="query" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><input value="Clear" type="reset"></td>
+                            <td><input value="Submit" type="submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </li>
+        </ul>
+        <hr noshade="noshade" size="2">
+    </font>
+</body>
+</html>

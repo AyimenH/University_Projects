@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Book Relation</title>
+</head>
+<body>
+    <h1>Book Relation</h1>
+    <?php
+    include 'connection.php';
+
+    $query = "SELECT * FROM Book";
+    $result = $conn->query($query);
+
+    if ($result->num_rows > 0) {
+        echo "<table border='1'>";
+        // Fetch field names for table header
+        $field_info = $result->fetch_fields();
+        echo "<tr>";
+        foreach ($field_info as $field) {
+            echo "<th>{$field->name}</th>";
+        }
+        echo "</tr>";
+
+        // Fetch rows
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            foreach ($row as $column) {
+                echo "<td>$column</td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "0 results";
+    }
+    $conn->close();
+    ?>
+</body>
+</html>
