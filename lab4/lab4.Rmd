@@ -1,0 +1,123 @@
+---
+title: "lab4"
+author: "Ayimen H."
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+1. Left-handedness
+
+(a) Suppose I randomly pick 200 people. What is the chance I will see fewer than 
+15 people who are left-handed?
+``` {r}
+p_left_handed <- 0.10
+n_a <- 200
+x_a <- 14
+prob_a <- pbinom(x_a, n_a, p_left_handed)
+
+prob_a
+```
+(b) Suppose I randomly pick 300 people. What is the chance I will see at least 
+40 people who are left-handed?
+```{r}
+n_b <- 300
+x_b <- 39
+prob_b <- 1 - pbinom(x_b, n_b, p_left_handed)
+
+prob_b
+```
+(c) Suppose that the Seattle Mariners have 21 pitchers. Of those 21 pitchers, 4 
+are left-handed. If we assume the probability of a pitcher being left-handed is 
+the same as the probability of any randomly selected person from the general 
+population being left-handed, what would be the probability of seeing at least 4 
+left-handed pitchers out of 21?
+```{r}
+n_c <- 21
+x_c <- 3
+prob_c <- 1 - pbinom(x_c, n_c, p_left_handed)
+
+prob_c
+```
+(d) Based on your answer from part (c), does our assumption about the probability 
+of a pitcher being left-handed seem reasonable? If not, how does the probability 
+differ from the probability for the general population?
+
+Based on the 15% from the previous question I believe the assumption that 10% of 
+pitchers being left-handed is reasonable
+
+(e) The Seattle Mariners have 3 catchers. All 3 of them are right-handed. If we 
+assume the probability of a catcher being left-handed is the same as the 
+probability of any randomly 2 selected person from the general population being 
+left-handed, what would be the probability of seeing no left-handed catchers out 
+of 3?
+```{r}
+n_e <- 3
+x_e <- 0
+prob_e <- dbinom(x_e, n_e, p_left_handed)
+
+prob_e
+```
+(f) Based on your answer from part (e), does our assumption about the probability 
+of a catcher being left-handed seem reasonable? If not, how does the probability 
+differ from the probability for the general population?
+
+Based on e I believe it doesn't differ too much considering the sample size being
+so small. The 72.9% of no lefties reinforces our assumption.
+
+(g) Suppose we were to look at a larger sample of catchers. If every catcher we 
+sampled were right-handed, how many catchers would we need to sample before you 
+would conclude that the true probability of a catcher being left-handed is less 
+than 10%?
+
+```{r}
+# couldn't figure out how to do this with a distribution
+
+p_left_handed <- 0.10
+n_g_alt <- ceiling(log(0.05) / log(1 - p_left_handed))
+
+n_g_alt
+```
+
+2. Computer server
+
+(a) What is the chance that more than 15 students will log into the server in a 
+particular hour?
+```{r}
+lambda_hourly <- 10
+x_2a <- 15
+prob_2a <- 1 - ppois(x_2a, lambda_hourly)
+
+prob_2a
+```
+(b) What is the chance of seeing exactly 10 students log into the server in a 
+particular hour?
+```{r}
+x_2b <- 10
+prob_2b <- dpois(x_2b, lambda_hourly)
+
+prob_2b
+```
+(c) What is the chance of fewer than 15 students logging into the server in a 
+two-hour period?
+```{r}
+lambda_two_hours <- 2 * lambda_hourly
+x_2c <- 14
+prob_2c <- ppois(x_2c, lambda_two_hours)
+
+prob_2c
+```
+(d) In designing the server, you must decide the maximum number of students that 
+it can accommodate at one time. The more students you allow it to accommodate, 
+the more expensive it will be. But if more students attempt to log in during a 
+single hour than it can accommodate, it will crash. How many students should you 
+design it to accommodate if you want there to be at most a 1% chance that it will 
+crash during any particular hour?
+```{r}
+lambda_hourly <- 10
+max_students <- qpois(0.99, lambda_hourly)
+
+max_students
+```

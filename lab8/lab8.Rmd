@@ -1,0 +1,166 @@
+---
+title: "lab8"
+author: "Ayimen H."
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Taste of cheddar cheese
+
+```{r}
+library(readxl)
+cheese_data <- read_excel("cheese.xls")
+```
+
+### (a) Write code to construct three scatter plots showing the relationship 
+between the response variable and each of the three predictor variables. For 
+each scatter plot, also find the corresponding sample correlation coefficient 
+value, r.
+
+```{r}
+plot(cheese_data$H2S, cheese_data$taste, main = "Taste vs. Hydrogen Sulfide", 
+     xlab = "Hydrogen Sulfide", ylab = "Taste Score", pch = 19)
+
+plot(cheese_data$Acetic, cheese_data$taste, main = "Taste vs. Acetic Acid",
+     xlab = "Acetic Acid", ylab = "Taste Score", pch = 19)
+
+plot(cheese_data$Lactic, cheese_data$taste, main = "Taste vs. Lactic Acid",
+     xlab = "Lactic Acid", ylab = "Taste Score", pch = 19)
+
+cor_h2s <- cor(cheese_data$H2S, cheese_data$taste)
+cor_acetic <- cor(cheese_data$Acetic, cheese_data$taste)
+cor_lactic <- cor(cheese_data$Lactic, cheese_data$taste)
+
+cat("r for Hydrogen Sulfide and Taste:", round(cor_h2s, 4), "\n")
+cat("r for Acetic Acid and Taste:", round(cor_acetic, 4), "\n")
+cat("r for Lactic Acid and Taste:", round(cor_lactic, 4), "\n")
+```
+Based on the scatter plots and correlation coefficients, there seems to be a 
+relationship between all variables and the taste score. The strongest relationship 
+with taste score is hydrogen sulfide as it has the highest correlation coefficient
+
+### (b) Find the equation of the regression line predicting taste score based on 
+hydrogen sulfide level. What taste score would you predict for a cheese whose 
+hydrogen sulfide measurement was 5.0?
+
+```{r}
+h2s_reg <- lm(formula = taste ~ H2S, data = cheese_data)
+intercept <- h2s_reg$coefficients[[1]]
+slope <- h2s_reg$coefficients[[2]]
+
+cat("Regression equation: Taste = ", round(intercept, 4), "+", round(slope, 4), 
+    "× Hydrogen Sulfide\n")
+
+plot(cheese_data$H2S, cheese_data$taste, main = "Taste vs. Hydrogen Sulfide", 
+     xlab = "Hydrogen Sulfide", ylab = "Taste Score", pch = 19)
+
+abline(h2s_reg, col = "red", lwd = 2)
+
+predicted_taste <- intercept + slope * 5.0
+cat("Taste score for hydrogen sulfide = 5.0: ", round(predicted_taste, 4))
+```
+
+### (c) Write code to find the value of the coefficient of determination, r2, for 
+the regression model predicting taste rating based on hydrogen sulfide levels. 
+In your own words, explain what this r2 value tells you about the quality of the 
+regression model.
+
+```{r}
+r_squared <- summary(h2s_reg)$r.squared
+cat("Coefficient of determination (r^2):", round(r_squared, 4), "\n")
+```
+The r^2 value 0.72 which means 72% of the differences in taste scores. This 
+suggests H2S is a good predictor of taste.
+
+### (d) Write code to estimate the equation of the regression line predicting 
+taste score based on all three predictor variables in a single equation. Based 
+on your regression equation, what taste score would you predict for a cheese 
+whose hydrogen sulfide measurement was 5.0, whose acetic acid measurement was 6.1,
+and whose lactic acid measurement was 0.90? Also, based on the output from the 
+statistical software, what proportion of the variability in taste scores can be 
+explained by this model using all three predictor variables?
+
+```{r}
+multi_reg <- lm(formula = taste ~ H2S + Acetic + Lactic, data = cheese_data)
+summary(multi_reg)
+
+multi_intercept <- multi_reg$coefficients[[1]]
+
+multi_h2s <- multi_reg$coefficients[[2]]
+multi_acetic <- multi_reg$coefficients[[3]]
+multi_lactic <- multi_reg$coefficients[[4]]
+
+cat("Multiple regression equation:\n")
+
+cat("Taste = ", round(multi_intercept, 4), "+", round(multi_h2s, 4), "× H2S +", 
+    round(multi_acetic, 4), "× Acetic +", round(multi_lactic, 4), "× Lactic\n")
+
+new_data <- data.frame(H2S = 5.0, Acetic = 6.1, Lactic = 0.90)
+
+predicted_taste_multi <- predict(multi_reg, newdata = new_data)
+cat("Predicted taste score for H2S = 5.0, Acetic = 6.1, and Lactic = 0.90: ", 
+    round(predicted_taste_multi, 4), "\n")
+
+multi_r_squared <- summary(multi_reg)$r.squared
+cat("Proportion of variability explained (R^2): ", round(multi_r_squared, 4), "\n")
+```
+
+## 2. Polyester rope failure
+
+First, let's read in the ropes data.
+
+```{r}
+ropes_data <- read.delim("ropes.txt", sep = " ", header = FALSE)
+names(ropes_data) <- c("Load", "Time")
+```
+
+### (a) Construct a scatter plot of x = load versus y = time. Would it be 
+reasonable to characterize the relationship between the two variables as linear?
+
+```{r}
+plot(ropes_data$Load, ropes_data$Time, main = "Time to Failure vs. Load", 
+     xlab = "Load (% of breaking load)", ylab = "Time to Failure", 
+     pch = 19)
+```
+Assuming I plotted it right the relationship between load and time to failure 
+doesn't seem like its linear.
+
+### (b) Transform the response variable by computing yT = log(y). Construct a 
+scatter plot of x and yT . Would it be reasonable to characterize the relationship 
+between these two variables as linear?
+
+```{r}
+ropes_data$LogTime <- log(ropes_data$Time)
+
+plot(ropes_data$Load, ropes_data$LogTime, main = "Log of Time to Failure vs. Load",
+     xlab = "Load (% of breaking load)", ylab = "Log of Time to Failure", pch = 19)
+```
+After taking the log of time the relationship I would say appears to be more linear.
+
+### (c) Fit a straight line to the (x, yT ) data. Based on the linear fit, predict 
+the value of failure time from a load of 85%?
+
+```{r}
+log_time_reg <- lm(LogTime ~ Load, data = ropes_data)
+
+coef_intercept <- log_time_reg$coefficients[[1]]
+coef_slope <- log_time_reg$coefficients[[2]]
+
+cat("Regression equation for the transformed data:\n")
+cat("log(Time) =", round(coef_intercept, 4), "+", round(coef_slope, 4), "× Load\n")
+
+plot(ropes_data$Load, ropes_data$LogTime, main = "Log of Time to Failure vs. Load",
+     xlab = "Load (% of breaking load)", ylab = "Log of Time to Failure", pch = 19)
+
+abline(log_time_reg, col = "red", lwd = 2)
+
+predicted_log_time <- coef_intercept + coef_slope * 85
+cat("Predicted log for a load of 85%:", round(predicted_log_time, 4), "\n")
+
+predicted_time <- exp(predicted_log_time)
+cat("Predicted failure time for a load of 85%:", round(predicted_time, 4), "\n")
+```

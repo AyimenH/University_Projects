@@ -1,0 +1,137 @@
+---
+title: "lab7"
+author: "Ayimen H."
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readxl)
+
+clouds <- read_excel("clouds.xlsx", sheet = "Sheet1")
+head(clouds)
+
+seeded <- clouds$Rainfall[clouds$Treatment == "Seeded"]
+unseeded <- clouds$Rainfall[clouds$Treatment == "Unseeded"]
+```
+1. Cloud seeding
+
+(a) Compute the mean and standard deviation of the unseeded cloud data. Also 
+compute the mean and standard deviation of the seeded cloud data.
+
+```{r}
+unseeded_mean <- mean(unseeded)
+unseeded_sd <- sd(unseeded)
+
+seeded_mean <- mean(seeded)
+seeded_sd <- sd(seeded)
+
+unseeded_mean
+unseeded_sd
+
+seeded_mean
+seeded_sd
+```
+
+(b) Compute the value of this test statistic z based on the values you calculated 
+in part (a).
+
+```{r}
+n1 <- length(seeded)
+n2 <- length(unseeded)
+
+z_stat <- (seeded_mean - unseeded_mean) / sqrt((seeded_sd^2 / n1) + 
+                                                 (unseeded_sd^2 / n2))
+z_stat
+```
+
+(c) Compute the value of the associated threshold zα out of a standard normal 
+distribution. Does the test statistic that you calculated in part (b) satisfy this 
+rejection region inequality? What does that mean in the context of this problem?
+
+```{r}
+z_critical <- qnorm(0.95)
+z_critical
+```
+Because the z_stat value is greater than the z_critical value that means we have
+to reject the null hypothesis because we assumed an approximately equal mean. 
+What this means for the problem is there is a statistaclly significant increase 
+in rain when seeding
+
+(d) Compute the p-value associated with the test statistic you found in part (b). 
+What does this p-value mean in the context of this problem?
+
+```{r}
+p_value_z <- 1 - pnorm(z_stat)
+p_value_z
+```
+Since the p-value is less than the 0.05 we set for the alpha, we have to reject 
+the null hypothesis. This means seeding clouds does lead to more rainfall.
+
+(e) Hence, take a log transform of the cloud data, so that we can more plausibly 
+assert the assumption that the underlying population is normally distributed.
+
+```{r}
+log_unseeded <- log(unseeded)
+log_seeded <- log(seeded)
+
+log_unseeded
+log_seeded
+```
+
+(f) Compute the mean and the standard deviation of the log-transformed data for 
+seeded clouds. Also compute the mean and the standard deviation of the 
+log-transformed data for unseeded clouds.
+
+```{r}
+log_unseeded_mean <- mean(log_unseeded)
+log_unseeded_sd <- sd(log_unseeded)
+
+log_seeded_mean <- mean(log_seeded)
+log_seeded_sd <- sd(log_seeded)
+
+log_unseeded_mean
+log_unseeded_sd
+
+log_seeded_mean
+log_seeded_sd
+```
+
+(g) Similarly to part (b), we can calculate a test statistic to consider whether 
+the means of the two distributions are approximately equal to each other. Compute 
+this test statistic t using the log transformed summary data from part (f).
+
+```{r}
+t_stat <- (log_seeded_mean - log_unseeded_mean) / sqrt((log_seeded_sd^2 / n1) + 
+                                                         (log_unseeded_sd^2 / n2))
+t_stat
+```
+
+(h) Using this formula, compute the value of the threshold tα, df for this test. 
+Does the test statistic that you calculated in part (b) satisfy this rejection 
+region inequality? What does that mean in the context of this problem?
+
+```{r}
+df_welch <- ((log_seeded_sd^2 / n1 + log_unseeded_sd^2 / n2)^2) /
+  (((log_seeded_sd^2 / n1)^2 / (n1 - 1)) + ((log_unseeded_sd^2 / n2)^2 / (n2 - 1)))
+t_critical <- qt(0.95, df_welch)
+
+t_critical
+```
+Since the t-test statistic is greater than the critical t-value we have to 
+reject the null hypothesis. This means seeding the clouds still increases rainfall.
+
+(i) Compute the p-value associated with the test statistic you found in part (g). 
+What does this p-value mean in the context of this problem?
+
+```{r}
+p_value_t <- 1 - pt(t_stat, df_welch)
+p_value_t
+```
+In the context of this problem the p-value represents whether we can "safely" 
+reject the the null hypothesis as long as it falls below our assumed threshold 
+of 0.05. Rejecting here means cloud seeding is significant.
