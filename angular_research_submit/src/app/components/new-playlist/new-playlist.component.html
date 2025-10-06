@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<form (submit)="handleSubmit($event)" class="p-4 border rounded">
+    <label class="block mb-2">
+      Playlist Name:
+
+      <input
+        type="text"
+        name="playlistName"
+        [(ngModel)]="name"
+        class="border p-2 w-full rounded"
+        required
+      />
+    </label>
+  
+    <label class="block mb-2">
+      <input type="checkbox" name="isPublic" [(ngModel)]="isChecked" />
+      Public
+    </label>
+  
+    <button type="submit" class="mt-2 p-2 bg-blue-500 text-white rounded">
+      Create Playlist
+    </button>
+  
+    <p *ngIf="error" class="text-red-500 mt-2">{{ error }}</p>
+  </form>
+  

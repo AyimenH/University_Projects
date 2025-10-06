@@ -1,0 +1,85 @@
+/* Dark Mode Styling for Playlist List Component */
+.playlist-container {
+    background-color: #121212;
+    color: #e0e0e0;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #333;
+  }
+  
+  .playlist-item {
+    background-color: #1e1e1e;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    margin: 8px 0;
+  }
+  
+  .playlist-item h2 {
+    font-size: 1.2rem;
+  }
+  
+  button, .action-link {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  button:hover, .action-link:hover {
+    opacity: 0.8;
+  }
+  
+  /* Dark Mode Styling for New Playlist Component */
+  .new-playlist-container {
+    background-color: #121212;
+    color: #e0e0e0;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #333;
+  }
+  
+  input, select {
+    background-color: #2a2a2a;
+    color: white;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 4px;
+  }
+  
+  /* Dark Mode Styling for Edit Playlist Component */
+  .edit-playlist-container {
+    background-color: #121212;
+    color: #e0e0e0;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #333;
+  }
+  
+  .track-list-item {
+    background-color: #1e1e1e;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .track-buttons button {
+    margin-left: 4px;
+    padding: 6px 10px;
+  }
+  
+  button.bg-green-500 {
+    background-color: #4caf50;
+  }
+  
+  button.bg-red-500 {
+    background-color: #e53935;
+  }
+  

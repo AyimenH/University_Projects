@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<div>
+    <h1 class="text-xl font-bold">My Playlists</h1>
+    <a routerLink="/new" class="p-2 bg-blue-500 text-white rounded">New Playlist</a>
+  
+    <p *ngIf="playlists.length === 0">Playlist Unavailable!</p>
+  
+    <ul *ngIf="playlists.length > 0">
+      <li *ngFor="let playlist of playlists" class="p-2 border rounded my-2">
+        <h2 class="text-lg font-semibold">{{ playlist.name }}</h2>
+        <p>{{ playlist.isPublic ? 'Public' : 'Private' }}</p>
+        <a (click)="navigateToEdit(playlist)" class="text-blue-500 cursor-pointer">
+          Edit
+        </a>
+      </li>
+    </ul>
+</div>
+  

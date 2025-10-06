@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<div>
+  <button
+    (click)="handleDoneEditing()"
+  >
+    Done?
+  </button>
+
+  <h1>Edit Playlist</h1>
+  <label>
+    <input type="checkbox" [checked]="isChecked" (change)="handleChange($event)" />
+    Public
+  </label>    
+
+  <h2 *ngIf="playlist; else loadingPlaylist">{{ playlist.name }}</h2>
+  <ng-template #loadingPlaylist><p>Loading playlist...</p></ng-template>
+
+  <h2>Tracks in Playlist</h2>
+  <ul *ngIf="playlistTracks.length > 0 else noTracks">
+    <li
+      *ngFor="let track of playlistTracks; let i = index"
+      class="p-2 border rounded my-2 flex justify-between items-center"
+    >
+      <div>
+        <p>{{ track.name }}</p>
+        <p>Duration: {{ track.duration }}</p>
+        <p>Artist: {{ track.primaryArtist }}</p>
+      </div>
+      <div>
+        <button
+          (click)="moveTrack(i, -1)"
+          [disabled]="i === 0"
+        >
+          ↑
+        </button>
+        <button
+          (click)="moveTrack(i, 1)"
+          [disabled]="i === playlistTracks.length - 1"
+        >
+          ↓
+        </button>
+        <button
+          (click)="removeTrackFromPlaylist(track.albumId, track.trackNumber)"
+          class="ml-2 p-2 bg-red-500 text-white rounded"
+        >
+          Remove Track
+        </button>
+      </div>
+    </li>
+  </ul>
+  <ng-template #noTracks><p>No Tracks In Playlist</p></ng-template>
+
+  <h2>Available Albums</h2>
+  <ul *ngIf="albums.length > 0 else noAlbums">
+    <li *ngFor="let album of albums" class="p-2 border rounded my-2">
+      <h2 class="text-lg font-semibold">{{ album.name }}</h2>
+      <p>Genre: {{ album.genre }}</p>
+      <p>Year Released: {{ album.yearReleased }}</p>
+  
+      <ul>
+        <li *ngFor="let track of albumTracks[album.id] || []" class="mb-2">
+          <p>{{ track.name }}</p>
+          <p>Duration: {{ track.duration }}</p>
+          <p>Artist: {{ track.primaryArtist }}</p>
+          <button
+            *ngIf="!isTrackInPlaylist(track, album.id)"
+            (click)="addTrackToPlaylist(album.id, track.trackNumber)"
+          >
+            Add Track
+          </button>
+          <span *ngIf="isTrackInPlaylist(track, album.id)" class="text-green-500">
+            ✔️ Added
+          </span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ng-template #noAlbums><p>No Albums Available</p></ng-template>  
+</div>

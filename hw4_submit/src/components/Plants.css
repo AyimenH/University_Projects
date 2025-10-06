@@ -1,0 +1,131 @@
+.plant-list {
+    padding: 20px;
+    margin: auto;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+}
+
+.plant-details {
+    margin-bottom: 40px;
+}
+
+#name {
+    text-align: center;
+}
+
+.plant-item {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 20px;
+    margin-bottom: 20px;
+    background: #242424;
+    background-color: #242424;
+    width: max-content;
+    white-space: nowrap;
+}
+
+.plant-image {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.plant-info {
+    flex: 1;
+}
+
+.plant-info a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.plant-info p {
+    margin: 5px 0;
+}
+
+.plant-list ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.plant-list li {
+    display: inline-flex;
+    flex: 0 1 auto;
+    min-width: auto;
+}
+
+.plant-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    justify-content: center; 
+    width: 100vw;  
+    text-align: center; 
+}
+
+.plant-info, .harvest-info {
+    flex: 1;
+}
+
+.detail-plant-image {
+    width: 200px;
+    height: 200px;
+}
+
+.harvest-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.harvest-table th, .harvest-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.even-row {
+    background-color: #B0B0B0;
+    color: #242424;
+}
+
+@media (min-width: 600px) {
+    .plant-details-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 10%;      
+    }
+
+    .plant-content {
+        display: flex;
+        justify-content: center; 
+        width: 90%; 
+        max-width: 1200px; 
+        position: relative;
+    }
+
+    .plant-info-detail {
+        flex: 1;
+        padding-right: 50px;
+        border-right: 2px solid #ccc;
+    }
+
+    .harvest-info {
+        flex: 1;
+        padding-left: 50px;
+    }
+
+    .plant-details-container h1 {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 20px;
+        position: relative;
+    }
+}  

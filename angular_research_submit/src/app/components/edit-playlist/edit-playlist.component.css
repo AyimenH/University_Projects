@@ -1,0 +1,40 @@
+/* Dark Mode Styling for Edit Playlist Component */
+.edit-playlist-container {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .track-list-item {
+    background-color: #1e1e1e;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    margin: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .track-list-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .track-buttons button {
+    margin-left: 6px;
+    padding: 8px 12px;
+  }
+  
+  button.bg-green-500 {
+    background-color: #4caf50;
+  }
+  
+  button.bg-red-500 {
+    background-color: #e53935;
+  }
+  
