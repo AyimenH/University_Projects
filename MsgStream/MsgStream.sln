@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsgStream", "MsgStream\MsgStream.csproj", "{A2168B67-C3A0-4515-928D-86541CC7D283}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsgStreamTest", "MsgStreamTest\MsgStreamTest.csproj", "{7D0728B0-6E80-4036-B938-6F9ED764592C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2168B67-C3A0-4515-928D-86541CC7D283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2168B67-C3A0-4515-928D-86541CC7D283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2168B67-C3A0-4515-928D-86541CC7D283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2168B67-C3A0-4515-928D-86541CC7D283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D0728B0-6E80-4036-B938-6F9ED764592C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0728B0-6E80-4036-B938-6F9ED764592C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0728B0-6E80-4036-B938-6F9ED764592C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0728B0-6E80-4036-B938-6F9ED764592C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

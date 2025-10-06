@@ -1,0 +1,4 @@
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\MsgStream\MsgStream\obj\Debug\net8.0\MsgStream.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\MsgStream\MsgStream\obj\Debug\net8.0\MsgStream.AssemblyInfoInputs.cache
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\MsgStream\MsgStream\obj\Debug\net8.0\MsgStream.AssemblyInfo.cs
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\MsgStream\MsgStream\obj\Debug\net8.0\MsgStream.csproj.CoreCompileInputs.cache
