@@ -1,0 +1,14 @@
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\bin\Debug\net8.0\P5.exe
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\bin\Debug\net8.0\P5.deps.json
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\bin\Debug\net8.0\P5.runtimeconfig.json
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\bin\Debug\net8.0\P5.dll
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\bin\Debug\net8.0\P5.pdb
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\obj\Debug\net8.0\P5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\obj\Debug\net8.0\P5.AssemblyInfoInputs.cache
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\obj\Debug\net8.0\P5.AssemblyInfo.cs
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\obj\Debug\net8.0\P5.csproj.CoreCompileInputs.cache
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\obj\Debug\net8.0\P5.dll
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\obj\Debug\net8.0\refint\P5.dll
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\obj\Debug\net8.0\P5.pdb
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\obj\Debug\net8.0\P5.genruntimeconfig.cache
+C:\Users\ayime\OneDrive\Desktop\Random\Projects\School\3200\P5\P5\obj\Debug\net8.0\ref\P5.dll
